@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="chuyenNut(this.id)" id="bat1">on</button>
+<button id="battery1"></button>
+<button  onclick="messeger(this.id)" id="send1">send</button><br>
+<textarea id="tex1" style="width: 350px;height: 250px"></textarea><br>
+<hr>
+<button onclick="chuyenNut(this.id)" id="bat2">on</button>
+<button id="battery2"></button>
+<button onclick="messeger(this.id)" id="send2">send</button><br>
+<textarea style="width: 350px;height: 250px"></textarea><br>
+
+<script>
+    let status1 = true;
+    let status2 = true;
+    function chuyenNut(id) {
+        console.log(id)
+        let on = document.getElementById('bat');
+
+        if (id=='bat1'){
+            status1=!status1
+            if (status1){
+                document.getElementById(id).innerHTML= 'ON'
+            }else{
+                document.getElementById(id).innerHTML= 'OFF'
+            }
+        }else {
+            status2=!status2
+            if (status2){
+                document.getElementById(id).innerHTML= 'ON'
+            }else{
+                document.getElementById(id).innerHTML= 'OFF'
+            }
+
+        }
+
+
+    }
+    class TelePhone {
+        outBox;
+        inBox;
+        name;
+        battery;
+        constructor(name,battery) {
+            this.name=name
+            this.battery=battery
+            this.outBox=[]
+            this.inBox=[]
+        }
+
+        getName(){
+            return this.name
+        }
+        setName(name){
+            this.name=name
+        }
+        getBattery(){
+            return this.battery
+        }
+        setBattery(battery){
+            this.battery=battery
+        }
+        getOutbox(){
+            return this.outBox
+        }
+        setInbox(inBox){
+            this.inBox=inBox
+        }
+        getInbox(){
+            return this.inBox
+
+        }
+
+    }
+    let mobi1 = new TelePhone('iphone',100)
+    let mobi2 = new TelePhone('samsung',100)
+    document.getElementById('battery1').innerHTML= mobi1.getBattery()+ '%'
+    document.getElementById('battery2').innerHTML= mobi1.getBattery()+ '%'
+    function messeger(id) {
+        if (id==='send1'){
+            mobi1.getOutbox().push(document.getElementById('tex1').value)
+            console.log(mobi1.getOutbox())
+        }
+
+    }
+</script>
+</body>
+</html>
